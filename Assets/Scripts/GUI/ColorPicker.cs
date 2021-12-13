@@ -3,6 +3,7 @@
     using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
+    using DG.Tweening;
 
     public class ColorPicker : MonoBehaviour
     {
@@ -64,6 +65,7 @@
         private void Button_OnClick()
         {
             Activate(customizationManager.CurrentColorScheme == colorScheme);
+            transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, vibrato:1);
         }
 
         private void CustomizationManager_OnCurrentColorChange(ColorScheme currentColorScheme)

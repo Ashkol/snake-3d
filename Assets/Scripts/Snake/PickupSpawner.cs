@@ -2,7 +2,8 @@
 {
     using System.Collections.Generic;
     using UnityEngine;
-    
+        using DG.Tweening;
+
     public class PickupSpawner : MonoBehaviour
     {
         [SerializeField] private Pickup pickupPrefab;
@@ -52,12 +53,22 @@
                 freeSpawnPositions.RemoveAt(posIndex);
                 var pickup = Instantiate(pickupPrefab, spawnPos.position, spawnPos.parent.rotation, spawnPos);
                 //pickup.SetColor(GameManager.instance.CurrentColorScheme);
-                pickup.OnPickUp += snake.IncreaseBodyLength;
-                pickup.OnPickUp += PlayManager.instance.IncreaseScore;
-                pickup.OnPickUp += Spawn;
-                pickup.OnPickUp += ((int _) => snake.Speed -= 0.01f);
+                pickup.OnPickUp += Pickup_OnPickUp;
             }
             //Debug.Log($"Spawned {amount} pick up");
         }
+
+        #region Event callbacks
+
+        private void Pickup_OnPickUp(int value)
+        {
+            snake.IncreaseBodyLength(value);
+            snake.PlayBodyPunch();
+            PlayManager.instance.IncreaseScore(value);
+            Spawn(value);
+            snake.Speed -= 0.01f;
+        }
+
+        #endregion
     }
 }

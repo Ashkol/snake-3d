@@ -4,6 +4,8 @@
     using System.Linq;
     using UnityEngine;
     using UnityEngine.Events;
+    using DG.Tweening;
+    using System.Collections;
 
     public class SnakeMovement : MonoBehaviour
     {
@@ -279,6 +281,20 @@
             cube.gameObject.SetActive(false);
             //spawner.takenSpawnPositions.Add(found);
             //spawner.freeSpawnPositions.Remove(found);
+        }
+
+        public void PlayBodyPunch()
+        {
+            StartCoroutine(PunchBodyParts());
+        }
+
+        private IEnumerator PunchBodyParts()
+        {
+            for (int i = 0; i < bodyCubes.Count; i++)
+            {
+                bodyCubes[i].transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, vibrato: 1);
+                yield return new WaitForSeconds(0.1f);
+            }
         }
 
         private void ReleaseTakenSpaces()
