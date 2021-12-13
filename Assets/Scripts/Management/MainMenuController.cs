@@ -56,7 +56,9 @@
 
         public void StartLevel(int level)
         {
-            GameManager.instance.LoadScene(level + 1);
+            //GameManager.instance.LoadScene(2);
+            GameManager.instance.LoadScene(level + 1); 
+
             //SceneManager.UnloadSceneAsync((int)SceneIndexes.MAIN_MENU);
             //SceneManager.LoadScene(level + 1, LoadSceneMode.Additive); // 0 for Master Scene, 1 for Main Menu 
         }

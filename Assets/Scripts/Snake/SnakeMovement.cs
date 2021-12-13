@@ -13,6 +13,9 @@
         public Event OnApplePickUp;
         public UnityEvent OnDeath;
 
+        [SerializeField]
+        private bool isMovementEnabled = true;
+
         public float Speed { get { return timeToMove; } set { if (value >= MIN_TIME_TO_MOVE && value <= MAX_TIME_TO_MOVE) timeToMove = value; } }
         [SerializeField, Tooltip("Seconds to move"), Range(MIN_TIME_TO_MOVE, MAX_TIME_TO_MOVE)] private float timeToMove = MAX_TIME_TO_MOVE;
         [SerializeField] private GameObject head;
@@ -51,7 +54,7 @@
         {
             //timeSinceLastMove += Time.fixedDeltaTime;
             timeSinceLastMove += Time.deltaTime;
-            if (timeSinceLastMove > timeToMove && isMoving)
+            if (timeSinceLastMove > timeToMove && isMoving && isMovementEnabled)
             {
                 Move();
                 timeSinceLastMove = 0f;

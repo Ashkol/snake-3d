@@ -1,5 +1,6 @@
 ﻿namespace MobileGame.Snake
 {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
 
@@ -11,6 +12,8 @@
         [SerializeField] private MainCamera sceneCamera;
         [SerializeField] private List<Pickup> pickups;
 
+        public event Action<ColorScheme> OnCurrentColorChange;
+
         public ColorScheme CurrentColorScheme 
         { 
             get 
@@ -20,10 +23,11 @@
             set 
             { 
                 GameManager.instance.CurrentColorScheme = value;
-
+                OnCurrentColorChange?.Invoke(value);
                 RefreshCustomization();
             } 
         }
+
         public ColorScheme defaultColorScheme;
         public Pickup CurrentPickup
         {

@@ -101,6 +101,7 @@
 
         public void PlayInterstitialAd()
         {
+            return;
             if (PlayedGames >= GamesBetweenAds)
             {
                 PlayedGames = 0;

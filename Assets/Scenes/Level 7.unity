@@ -6305,6 +6305,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TurnDownLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 4408336055124394453, guid: 7b15b19e40ec338479ea76aab4cc639f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 450
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b15b19e40ec338479ea76aab4cc639f, type: 3}
 --- !u!1 &1008631927 stripped
@@ -10649,6 +10654,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
